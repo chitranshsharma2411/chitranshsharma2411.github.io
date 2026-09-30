@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chitransh Sharma | Data Analyst & Power BI Developer</title>
+<meta name="description" content="Portfolio of Chitransh Sharma — Data Analyst & Power BI Developer with a Commerce background and PGDM in Data Science. Explore live Power BI dashboards, Streamlit web apps, DAX measures, and SQL queries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #0c1322;
+  --paper-elevated: #131e33;
+  --card: #162238;
+  --card-hover: #1c2b47;
+  --grid: #1d2c47;
+  --ink: #f0f4f8;
+  --mute: #94a3b8;
+  --mute-light: #64748b;
+  --teal: #14b8a6;
+  --teal-glow: rgba(20, 184, 166, 0.15);
+  --amber: #f59e0b;
+  --amber-glow: rgba(245, 158, 11, 0.15);
+  --plum: #a855f7;
+  --plum-glow: rgba(168, 85, 247, 0.15);
+  --blue: #38bdf8;
+  --line: #243552;
+  --line-light: #334a6e;
+  --code-bg: #090e17;
+  --code-border: #1e2d42;
+  --accent-badge: #1e293b;
+  --success: #10b981;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
+  --shadow-lg: 0 16px 36px rgba(0,0,0,0.5);
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root[data-theme="light"] {
+  --paper: #f4f7f9;
+  --paper-elevated: #ffffff;
+  --card: #ffffff;
+  --card-hover: #f8fafc;
+  --grid: #e2e8f0;
+  --ink: #0f172a;
+  --mute: #475569;
+  --mute-light: #94a3b8;
+  --teal: #0d9488;
+  --teal-glow: rgba(13, 148, 136, 0.12);
+  --amber: #d97706;
+  --amber-glow: rgba(217, 119, 6, 0.12);
+  --plum: #7c3aed;
+  --plum-glow: rgba(124, 58, 237, 0.12);
+  --blue: #0284c7;
+  --line: #cbd5e1;
+  --line-light: #e2e8f0;
+  --code-bg: #1e293b;
+  --code-border: #334155;
+  --accent-badge: #e2e8f0;
+  --shadow-sm: 0 2px 4px rgba(15,23,42,0.06);
+  --shadow-md: 0 8px 20px rgba(15,23,42,0.08);
+  --shadow-lg: 0 16px 32px rgba(15,23,42,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  background-image: 
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center top;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+.mono { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+/* Container */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header & Nav */
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(12, 19, 34, 0.85);
+  border-bottom: 1px solid var(--line);
+  transition: var(--transition);
+}
+:root[data-theme="light"] header.site-header {
+  background: rgba(244, 247, 249, 0.88);
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.brand-pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 10px var(--teal);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+nav.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+nav.main-nav a {
+  color: var(--mute);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+nav.main-nav a:hover, nav.main-nav a:focus-visible {
+  color: var(--ink);
+  background: var(--teal-glow);
+  outline: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle-btn {
+  background: var(--paper-elevated);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.theme-toggle-btn:hover {
+  border-color: var(--teal);
+  transform: rotate(15deg);
+}
+
+/* Hero Section */
+.hero {
+  padding: 60px 0 40px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+}
+@media (max-width: 920px) {
+  .hero { grid-template-columns: 1fr; padding: 40px 0 30px; }
+}
+
+.hero-tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal-glow);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  color: var(--teal);
+  padding: 5px 12px;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  margin: 0 0 18px;
+}
+.hero h1 .highlight {
+  color: var(--teal);
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero p.bio {
+  font-size: 1.12rem;
+  color: var(--mute);
+  max-width: 48ch;
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.92rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+.btn-primary {
+  background: var(--teal);
+  color: #042f2c;
+  box-shadow: 0 4px 14px rgba(20, 184, 166, 0.35);
+}
+.btn-primary:hover {
+  background: #2dd4bf;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(20, 184, 166, 0.45);
+}
+.btn-outline {
+  background: var(--paper-elevated);
+  border-color: var(--line);
+  color: var(--ink);
+}
+.btn-outline:hover {
+  border-color: var(--teal);
+  background: var(--teal-glow);
+  transform: translateY(-2px);
+}
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Interactive SQL Terminal */
+.terminal-window {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.terminal-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: #111a28;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.window-controls {
+  display: flex;
+  gap: 7px;
+}
+.control-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ff5f56;
+}
+.control-dot:nth-child(2) { background: #ffbd2e; }
+.control-dot:nth-child(3) { background: #27c93f; }
+.terminal-title {
+  font-size: 0.76rem;
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.terminal-body {
+  padding: 16px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+.query-prompt {
+  color: #94a3b8;
+  margin-bottom: 10px;
+}
+.query-prompt span.user { color: var(--teal); }
+.query-prompt span.db { color: var(--amber); }
+
+.preset-queries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.query-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.query-chip:hover, .query-chip.active {
+  background: var(--teal);
+  color: #042f2c;
+  border-color: var(--teal);
+  font-weight: 600;
+}
+
+.query-editor {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #e2e8f0;
+  margin-bottom: 12px;
+  min-height: 64px;
+  white-space: pre-wrap;
+  font-size: 0.83rem;
+}
+.kwd { color: #38bdf8; font-weight: 600; }
+.str { color: #f59e0b; }
+.fn { color: #a855f7; }
+
+.query-results {
+  max-height: 160px;
+  overflow-y: auto;
+  border-top: 1px dashed rgba(255,255,255,0.15);
+  padding-top: 10px;
+}
+.query-results table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  text-align: left;
+}
+.query-results th {
+  color: var(--teal);
+  padding: 4px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+.query-results td {
+  padding: 5px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+}
+
+/* KPI Ticker Ribbon */
+.kpi-ticker-section {
+  padding: 24px 0 44px;
+}
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+.kpi-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 18px 16px;
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+.kpi-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--kpi-color, var(--teal));
+}
+.kpi-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-light);
+  box-shadow: var(--shadow-sm);
+}
+.kpi-value {
+  font-size: 1.95rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+}
+.kpi-label {
+  font-size: 0.8rem;
+  color: var(--mute);
+  margin-top: 4px;
+  font-weight: 500;
+}
+.kpi-sub {
+  font-size: 0.72rem;
+  color: var(--teal);
+  margin-top: 6px;
+  display: block;
+}
+
+/* Section Header */
+.section-head {
+  margin-bottom: 32px;
+}
+.section-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+.section-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0 0 8px;
+}
+.section-desc {
+  font-size: 1rem;
+  color: var(--mute);
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* Project Filter Tabs */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.filter-btn {
+  background: var(--paper-elevated);
+  border: 1px solid var(--line);
+  color: var(--mute);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.filter-btn:hover {
+  color: var(--ink);
+  border-color: var(--line-light);
+}
+.filter-btn.active {
+  background: var(--teal);
+  color: #042f2c;
+  border-color: var(--teal);
+}
+
+/* Project Cards Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+@media (max-width: 640px) {
+  .projects-grid { grid-template-columns: 1fr; }
+}
+
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: var(--transition);
+  position: relative;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--teal);
+  box-shadow: var(--shadow-md);
+}
+
+.card-topbar {
+  padding: 16px 20px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,0.015);
+}
+.card-category-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.badge-pbi { background: rgba(245, 158, 11, 0.18); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+.badge-app { background: rgba(20, 184, 166, 0.18); color: #14b8a6; border: 1px solid rgba(20, 184, 166, 0.3); }
+.badge-py  { background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+.badge-biz { background: rgba(168, 85, 247, 0.18); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+.status-pill {
+  font-size: 0.7rem;
+  color: var(--mute);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.status-pill::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+}
+
+.card-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.card-subtitle {
+  font-size: 0.85rem;
+  color: var(--mute);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.metric-callout {
+  background: rgba(20, 184, 166, 0.08);
+  border-left: 3px solid var(--teal);
+  padding: 8px 12px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 14px;
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+.metric-callout strong {
+  color: var(--teal);
+}
+
+.project-bullets {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: var(--mute);
+}
+.project-bullets li {
+  margin-bottom: 6px;
+}
+.project-bullets li strong {
+  color: var(--ink);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+.tech-tag {
+  background: var(--accent-badge);
+  color: var(--mute);
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.card-actions {
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.15);
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Code Drawer Accordion */
+.code-drawer-toggle {
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--mute);
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+.code-drawer-toggle:hover {
+  color: var(--ink);
+  border-color: var(--teal);
+}
+.code-drawer-content {
+  display: none;
+  padding: 12px 16px;
+  background: var(--code-bg);
+  border-top: 1px solid var(--code-border);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #cbd5e1;
+  overflow-x: auto;
+}
+.code-drawer-content.open {
+  display: block;
+}
+
+/* Architecture & Modeling Section */
+.architecture-section {
+  padding: 60px 0;
+  border-top: 1px solid var(--line);
+}
+.arch-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+}
+.star-schema-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-top: 24px;
+}
+@media (max-width: 800px) {
+  .star-schema-grid { grid-template-columns: 1fr; }
+}
+.schema-box {
+  background: var(--paper-elevated);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+.schema-box.fact {
+  border-color: var(--teal);
+  box-shadow: 0 0 16px var(--teal-glow);
+}
+.schema-box-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.schema-fields {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--mute);
+}
+.schema-fields li {
+  padding: 2px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.schema-fields li span.pk { color: var(--amber); font-weight: 600; }
+.schema-fields li span.fk { color: var(--blue); font-weight: 600; }
+.schema-fields li span.val { color: var(--teal); }
+
+/* Interactive DAX & SQL Tabs Section */
+.code-playground-section {
+  padding: 50px 0;
+  border-top: 1px solid var(--line);
+}
+.code-tab-nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.code-tab-btn {
+  background: var(--paper-elevated);
+  border: 1px solid var(--line);
+  color: var(--mute);
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.code-tab-btn.active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+:root[data-theme="light"] .code-tab-btn.active {
+  background: #0f172a;
+  color: #ffffff;
+}
+.code-snippet-box {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  position: relative;
+  overflow-x: auto;
+}
+.copy-snippet-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #cbd5e1;
+  font-size: 0.72rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.copy-snippet-btn:hover {
+  background: var(--teal);
+  color: #042f2c;
+}
+
+/* Skills Matrix */
+.skills-section {
+  padding: 50px 0;
+  border-top: 1px solid var(--line);
+}
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: var(--transition);
+}
+.skill-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-light);
+}
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.skill-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.skill-level-text {
+  font-size: 0.78rem;
+  color: var(--teal);
+}
+.skill-desc {
+  font-size: 0.8rem;
+  color: var(--mute);
+  margin-bottom: 12px;
+  display: block;
+}
+.skill-meter {
+  display: flex;
+  gap: 4px;
+}
+.skill-meter-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.08);
+}
+:root[data-theme="light"] .skill-meter-bar {
+  background: rgba(0,0,0,0.08);
+}
+.skill-meter-bar.active {
+  background: var(--bar-color, var(--teal));
+}
+
+/* Experience & Education Grid */
+.timeline-section {
+  padding: 50px 0;
+  border-top: 1px solid var(--line);
+}
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+@media (max-width: 800px) {
+  .two-col-grid { grid-template-columns: 1fr; }
+}
+
+.timeline-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: var(--transition);
+}
+.timeline-card:hover {
+  border-color: var(--line-light);
+}
+.timeline-date {
+  font-size: 0.78rem;
+  color: var(--amber);
+  margin-bottom: 4px;
+  display: block;
+}
+.timeline-role {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+.timeline-org {
+  font-size: 0.88rem;
+  color: var(--mute);
+  margin-bottom: 12px;
+  display: block;
+}
+.timeline-bullets {
+  padding-left: 18px;
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--mute);
+}
+.timeline-bullets li {
+  margin-bottom: 6px;
+}
+
+/* Authenticity Guide Accordion */
+.authenticity-section {
+  padding: 50px 0;
+  border-top: 1px solid var(--line);
+}
+.guide-box {
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.05), rgba(56, 189, 248, 0.05));
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.guide-item {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+.guide-item h4 {
+  margin: 0 0 8px;
+  font-size: 0.98rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+}
+.guide-item p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--mute);
+  line-height: 1.5;
+}
+
+/* Contact Console */
+.contact-section {
+  padding: 50px 0 70px;
+  border-top: 1px solid var(--line);
+}
+.contact-box {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+}
+.contact-link {
+  color: var(--amber);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--amber);
+}
+.contact-link:hover {
+  color: #fde68a;
+  border-bottom-style: solid;
+}
+
+/* Modal Dialog */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 16, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal-window {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  max-width: 780px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: modalFadeIn 0.25s ease-out;
+}
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.modal-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: var(--mute);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-body {
+  padding: 24px;
+}
+.modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Footer */
+footer.site-footer {
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  color: var(--mute);
+  font-size: 0.84rem;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container nav-wrapper">
+    <a href="#" class="brand-badge mono">
+      <span class="brand-pulse"></span>
+      <span>chitransh.analytics</span>
+    </a>
+    <nav class="main-nav mono">
+      <a href="#projects">projects</a>
+      <a href="#dax-sql">dax &amp; sql</a>
+      <a href="#modeling">data model</a>
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" id="theme-btn" aria-label="Toggle theme">
+        <svg id="theme-icon" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+      <a href="https://github.com/chitransh24god" target="_blank" rel="noopener" class="btn btn-outline btn-sm mono">
+        GitHub ↗
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-tagline mono">
+        <span>⚡ OPEN TO DATA ANALYST &amp; BI ROLES</span>
+      </div>
+      <h1>
+        I turn complex data into <span class="highlight">measurable business action.</span>
+      </h1>
+      <p class="bio">
+        Commerce graduate (B.Com) + PGDM in Data Science &amp; Analytics (NBS). 
+        Specialized in <strong>Power BI DAX measure engineering</strong>, <strong>interactive decision platforms</strong>, and <strong>Python automated data pipelines</strong>.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary mono">
+          <span>Explore Dashboards &amp; Apps</span>
+          <span>↓</span>
+        </a>
+        <a href="#contact" class="btn btn-outline mono">
+          <span>Get In Touch</span>
+        </a>
+        <a href="https://linkedin.com/in/chitransh-sharma-252145390" target="_blank" rel="noopener" class="btn btn-outline mono">
+          <span>LinkedIn ↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Interactive SQL Query Terminal -->
+    <div class="terminal-window">
+      <div class="terminal-topbar">
+        <div class="window-controls">
+          <div class="control-dot"></div>
+          <div class="control-dot"></div>
+          <div class="control-dot"></div>
+        </div>
+        <div class="terminal-title mono">postgres@chitransh-dw: ~</div>
+      </div>
+      <div class="terminal-body mono">
+        <div class="query-prompt">
+          <span class="user">recruiter</span>@<span class="db">portfolio_db</span>=# click a query to run:
+        </div>
+        <div class="preset-queries">
+          <button class="query-chip active" onclick="runQuery('kpis')">SELECT * FROM impact_kpis;</button>
+          <button class="query-chip" onclick="runQuery('pbi')">SELECT * FROM power_bi_dashboards;</button>
+          <button class="query-chip" onclick="runQuery('stack')">SELECT tool, mastery FROM tech_stack;</button>
+          <button class="query-chip" onclick="runQuery('vsd')">SELECT * FROM internship_vsd;</button>
+        </div>
+        <div class="query-editor" id="query-display"><span class="kwd">SELECT</span> metric_name, value, business_context 
+<span class="kwd">FROM</span>   analyst_impact_kpis 
+<span class="kwd">ORDER BY</span> business_value <span class="kwd">DESC</span>;</div>
+        <div class="query-results" id="query-results-area">
+          <!-- Dynamic table populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live KPI Ticker Ribbon -->
+  <section class="kpi-ticker-section" id="metrics">
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--kpi-color: var(--teal)">
+        <div class="kpi-value mono">10,000+</div>
+        <div class="kpi-label">Records Cleaned &amp; Handled</div>
+        <span class="kpi-sub mono">MongoDB &amp; Python ETL</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color: var(--amber)">
+        <div class="kpi-value mono">₹321.7 Cr</div>
+        <div class="kpi-label">Commercial Revenue Modeled</div>
+        <span class="kpi-sub mono">ABC Ltd Executive Analysis</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color: var(--plum)">
+        <div class="kpi-value mono">1,470</div>
+        <div class="kpi-label">Employees Segmented</div>
+        <span class="kpi-sub mono">IBM HR Attrition Power BI</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color: var(--blue)">
+        <div class="kpi-value mono">40+</div>
+        <div class="kpi-label">File Formats Supported</div>
+        <span class="kpi-sub mono">DataForge Converter Engine</span>
+      </div>
+      <div class="kpi-card" style="--kpi-color: var(--teal)">
+        <div class="kpi-value mono">10+</div>
+        <div class="kpi-label">Custom DAX KPIs Built</div>
+        <span class="kpi-sub mono">Calculated Measures &amp; Time Intel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Showcase -->
+  <section class="projects-section" id="projects">
+    <div class="section-head">
+      <span class="section-badge mono">PORTFOLIO ARTIFACTS</span>
+      <h2 class="section-title">Featured Projects &amp; Live Systems</h2>
+      <p class="section-desc">
+        Explore interactive Power BI reports, AI-driven data tools, and financial models built with real business logic and verified datasets.
+      </p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar mono">
+      <button class="filter-btn active" onclick="filterProjects('all')">All Work (8)</button>
+      <button class="filter-btn" onclick="filterProjects('pbi')">Power BI Dashboards (3)</button>
+      <button class="filter-btn" onclick="filterProjects('app')">Web Apps &amp; Tools (3)</button>
+      <button class="filter-btn" onclick="filterProjects('python')">Python &amp; ML (2)</button>
+      <button class="filter-btn" onclick="filterProjects('finance')">Financial &amp; Operations (2)</button>
+    </div>
+
+    <div class="projects-grid" id="projects-container">
+
+      <!-- PROJECT 1: HR Analytics Power BI -->
+      <article class="project-card" data-category="pbi">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-pbi mono">Power BI Dashboard</span>
+          <span class="status-pill mono">Interactive Report</span>
+        </div>
+        <div class="card-content">
+          <h3>HR Analytics &amp; Employee Retention</h3>
+          <span class="card-subtitle">Executive Workforce Intelligence System</span>
+          <div class="metric-callout mono">
+            <strong>Key Finding:</strong> Identified 3x higher attrition in Sales Reps &amp; Lab Techs with mandatory overtime; month-18 tenure risk peak.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Dataset:</strong> IBM HR Analytics benchmark (1,470 employee records, 35 attributes).</li>
+            <li><strong>DAX Engineering:</strong> Engineered 10+ custom DAX measures for dynamic Attrition Rate, Average Tenure, and High-Risk Segments.</li>
+            <li><strong>UX Architecture:</strong> Implemented drill-through views, department slicers, and salary band cross-filtering for executive leadership.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">DAX Measures</span>
+            <span class="tech-tag">Power Query (M)</span>
+            <span class="tech-tag">Star Schema</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary btn-sm mono" onclick="openModal('hr')">📊 Preview Details</button>
+          <button class="code-drawer-toggle mono" onclick="toggleCodeDrawer('hr-code')">{ } View DAX</button>
+          <a href="https://github.com/chitransh24god" target="_blank" rel="noopener" class="btn btn-outline btn-sm mono">GitHub ↗</a>
+        </div>
+        <div class="code-drawer-content mono" id="hr-code">
+<strong>-- DAX: Dynamic Attrition Rate Measure</strong>
+Attrition Rate % = 
+DIVIDE(
+    CALCULATE(
+        COUNTROWS('Dim_Employees'),
+        'Dim_Employees'[Attrition] = "Yes"
+    ),
+    COUNTROWS('Dim_Employees'),
+    0
+)
+
+<strong>-- DAX: High Risk Overtime Flag</strong>
+High Risk Cohort = 
+IF(
+    SELECTEDVALUE('Dim_Employees'[OverTime]) = "Yes" && 
+    SELECTEDVALUE('Dim_Employees'[JobSatisfaction]) <= 2,
+    "High Risk",
+    "Stable"
+)
+        </div>
+      </article>
+
+      <!-- PROJECT 2: Know Your Resume Streamlit AI App -->
+      <article class="project-card" data-category="app">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-app mono">Live Streamlit App</span>
+          <span class="status-pill mono">Deployed &amp; Live</span>
+        </div>
+        <div class="card-content">
+          <h3>Know Your Resume — AI ATS Intelligence</h3>
+          <span class="card-subtitle">Full-Stack AI Resume &amp; Skill Gap Platform</span>
+          <div class="metric-callout mono">
+            <strong>Impact:</strong> Sub-second PDF/DOCX multi-format parsing, ATS score computation, 8–15 keyword gap identification.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>AI Pipeline:</strong> Integrated Llama 3.3 70B via Groq API for rapid semantic candidate-job matching.</li>
+            <li><strong>Parsing Engine:</strong> Dual-pipeline extraction using PyMuPDF for native digital PDFs and Tesseract OCR for scanned documents.</li>
+            <li><strong>Actionable Feedback:</strong> Rewrites weak bullet points into high-impact STAR accomplishments.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Groq API</span>
+            <span class="tech-tag">Llama 3.3 70B</span>
+            <span class="tech-tag">PyMuPDF</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://chitransh24god-know-your-resume.streamlit.app" target="_blank" rel="noopener" class="btn btn-primary btn-sm mono">🚀 Open Live App ↗</a>
+          <a href="https://github.com/chitransh24god/know-your-resume" target="_blank" rel="noopener" class="btn btn-outline btn-sm mono">Code Repo ↗</a>
+          <button class="code-drawer-toggle mono" onclick="toggleCodeDrawer('resume-code')">{ } Tech Stack</button>
+        </div>
+        <div class="code-drawer-content mono" id="resume-code">
+# Tech Architecture:
+# Frontend/UI: Streamlit Cloud
+# LLM Inference: Groq Cloud (llama-3.3-70b-versatile, temp=0.2)
+# Text Extraction: fitz (PyMuPDF) + mammoth (DOCX) + pytesseract fallback
+# Live Hosted URL: https://chitransh24god-know-your-resume.streamlit.app
+        </div>
+      </article>
+
+      <!-- PROJECT 3: ABC Ltd Executive Operations & Commercial Analysis -->
+      <article class="project-card" data-category="pbi">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-pbi mono">Power BI &amp; Excel</span>
+          <span class="status-pill mono">Executive Deliverable</span>
+        </div>
+        <div class="card-content">
+          <h3>ABC Ltd Commercial Performance &amp; Margin Risk</h3>
+          <span class="card-subtitle">Executive Boardroom Financial Analysis</span>
+          <div class="metric-callout mono">
+            <strong>Critical Finding:</strong> Operations category drove ₹129.8 Cr revenue but suffered 21.2% margin erosion due to 33.8% delivery delays in Tier 3 cities.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Scale:</strong> Modeled ₹321.7 Cr revenue across 7,535 transactions with an overall 51.8% operating profit margin.</li>
+            <li><strong>Cross-Subsidization Analysis:</strong> Proved Finance (83.8% margin) and IT (64.9%) were subsidizing operational logistics leakage.</li>
+            <li><strong>Inventory Turnover:</strong> Evaluated 8.03x inventory turnover against delivery lead times (averaging 4.93 days in Tier 3).</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Financial Modeling</span>
+            <span class="tech-tag">Executive Storytelling</span>
+            <span class="tech-tag">Excel Pivot</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary btn-sm mono" onclick="openModal('abc')">📑 View Executive Note</button>
+          <button class="code-drawer-toggle mono" onclick="toggleCodeDrawer('abc-code')">{ } Metric Formula</button>
+        </div>
+        <div class="code-drawer-content mono" id="abc-code">
+<strong>-- DAX / Financial Margin Variance Measure</strong>
+Category Margin Variance = 
+VAR CompanyAvgMargin = 0.574
+VAR CurrentCatMargin = DIVIDE(SUM('Fact_Sales'[OperatingProfit]), SUM('Fact_Sales'[NetRevenue]), 0)
+RETURN
+CurrentCatMargin - CompanyAvgMargin
+
+-- Operations Category Margin = 21.2% (-36.2% deficit vs benchmark)
+-- Fulfillment Delay Rate = 2,547 orders delayed / 7,535 total orders = 33.8%
+        </div>
+      </article>
+
+      <!-- PROJECT 4: DataForge Converter & Cleaning Engine -->
+      <article class="project-card" data-category="app">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-app mono">Data Engineering Tool</span>
+          <span class="status-pill mono">In-Memory ETL</span>
+        </div>
+        <div class="card-content">
+          <h3>DataForge — Universal Ingestion &amp; Excel Converter</h3>
+          <span class="card-subtitle">Multi-Format Automated Data Pipeline</span>
+          <div class="metric-callout mono">
+            <strong>Capability:</strong> Auto-detects schema, normalizes headers, and converts 40+ raw formats (Parquet, SQL, JSON) into formatted Excel sheets.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Multi-Format Ingestion:</strong> Handles CSV, Parquet, JSONL, SQL dumps, YAML, Feather, and raw clipboard text.</li>
+            <li><strong>Data Cleansing:</strong> Automated type coercion, duplicate removal, header normalization, and summary tab compilation.</li>
+            <li><strong>Privacy First:</strong> Operates 100% in-memory without persisting sensitive data to disk.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Pandas</span>
+            <span class="tech-tag">OpenPyXL</span>
+            <span class="tech-tag">Streamlit</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary btn-sm mono" onclick="openModal('dataforge')">⚙️ Architecture</button>
+          <a href="https://github.com/chitransh24god" target="_blank" rel="noopener" class="btn btn-outline btn-sm mono">GitHub ↗</a>
+        </div>
+      </article>
+
+      <!-- PROJECT 5: AIWise Consulting Platform -->
+      <article class="project-card" data-category="app">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-app mono">Decision Platform</span>
+          <span class="status-pill mono">Interactive Engine</span>
+        </div>
+        <div class="card-content">
+          <h3>AIWise Consulting — AI Adoption &amp; Financial ROI</h3>
+          <span class="card-subtitle">Strategic Unit Economics &amp; Readiness Platform</span>
+          <div class="metric-callout mono">
+            <strong>Value:</strong> Rule-based unit economics engine calculating payback periods (months) and operational cost reductions for SMEs.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>5-Dimension Scoring:</strong> Assesses Business Impact (30%), Repetitive Labor (25%), Cost Efficiency (20%), Data Readiness (15%), Feasibility (10%).</li>
+            <li><strong>Interactive ROI Modeler:</strong> Calculates net savings comparing baseline FTE wages against implementation and API token overhead.</li>
+            <li><strong>Executive Roadmap:</strong> Dynamically generates a phased Gantt-style implementation schedule and downloadable report.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Plotly Express</span>
+            <span class="tech-tag">Financial Modeling</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary btn-sm mono" onclick="openModal('aiwise')">📊 Model Details</button>
+          <button class="code-drawer-toggle mono" onclick="toggleCodeDrawer('aiwise-code')">{ } ROI Logic</button>
+        </div>
+        <div class="code-drawer-content mono" id="aiwise-code">
+def calculate_payback_period(annual_labor_savings, initial_capex, monthly_cloud_tokens):
+    net_monthly_savings = (annual_labor_savings / 12) - monthly_cloud_tokens
+    if net_monthly_savings <= 0:
+        return float('inf') # Negative ROI
+    return round(initial_capex / net_monthly_savings, 1) # Payback in months
+        </div>
+      </article>
+
+      <!-- PROJECT 6: Student AI Interaction Analysis -->
+      <article class="project-card" data-category="pbi">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-pbi mono">Power BI Dashboard</span>
+          <span class="status-pill mono">Educational Analytics</span>
+        </div>
+        <div class="card-content">
+          <h3>Student &amp; Generative AI Interaction Analysis</h3>
+          <span class="card-subtitle">Cognitive Engagement &amp; Prompt Utilization Study</span>
+          <div class="metric-callout mono">
+            <strong>Key Insight:</strong> Mapped correlation between prompt length, iterative refinements, and student comprehension outcomes.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>KPI Engineering:</strong> Formulated KPIs for session duration, prompt density, satisfaction score, and cognitive offloading patterns.</li>
+            <li><strong>Visual Data Storytelling:</strong> Designed multi-page dashboard highlighting peak engagement hours and common query bottlenecks.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">DAX KPIs</span>
+            <span class="tech-tag">Survey Analytics</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-outline btn-sm mono" onclick="openModal('student')">View Dashboard KPIs</button>
+        </div>
+      </article>
+
+      <!-- PROJECT 7: Indian Banking Risk & Stock Benchmark -->
+      <article class="project-card" data-category="finance">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-biz mono">Quantitative Finance</span>
+          <span class="status-pill mono">Excel &amp; Power BI</span>
+        </div>
+        <div class="card-content">
+          <h3>Major Indian Banks Benchmark &amp; Risk Analytics</h3>
+          <span class="card-subtitle">SBI, HDFC, ICICI, Axis Bank vs BSE Sensex</span>
+          <div class="metric-callout mono">
+            <strong>Methodology:</strong> Calculated CAGR, annualized volatility, Beta, and Sharpe ratios to determine risk-adjusted portfolio alpha.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Time-Series Analysis:</strong> Processed historical daily adjusted close prices and normalized cumulative returns against the index.</li>
+            <li><strong>Correlation Modeling:</strong> Built dynamic covariance matrices and volatility trend lines using Excel advanced formulas and Power BI cards.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Excel Advanced</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">Sharpe Ratio</span>
+            <span class="tech-tag">Statistical Analysis</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-outline btn-sm mono" onclick="openModal('banking')">📈 Methodology</button>
+        </div>
+      </article>
+
+      <!-- PROJECT 8: ABB Analyzer (Average Bank Balance) -->
+      <article class="project-card" data-category="python">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-py mono">Python Automation</span>
+          <span class="status-pill mono">Credit Underwriting</span>
+        </div>
+        <div class="card-content">
+          <h3>ABB Analyzer — Automated Bank Statement Engine</h3>
+          <span class="card-subtitle">Credit Risk &amp; Loan Underwriting System</span>
+          <div class="metric-callout mono">
+            <strong>Efficiency:</strong> Eliminated manual PDF transaction entry; extracts, categorizes, and calculates monthly ABB in under 5 seconds.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Parser:</strong> Extracts raw tables and transaction descriptions from multi-page scanned/digital bank statements.</li>
+            <li><strong>Underwriting Logic:</strong> Flags cheque bounces, low balance breaches, and automated EMI debits for loan sanctioning.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">PDF Parsing</span>
+            <span class="tech-tag">Credit Analytics</span>
+            <span class="tech-tag">Automation</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-outline btn-sm mono" onclick="openModal('abb')">🔍 Underwriting Flow</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Star Schema & Data Modeling Architecture Spotlight -->
+  <section class="architecture-section" id="modeling">
+    <div class="section-head">
+      <span class="section-badge mono">PROOF OF WORK</span>
+      <h2 class="section-title">Dimensional Modeling &amp; Architecture</h2>
+      <p class="section-desc">
+        How I structure clean, high-performance Star Schemas in Power BI to ensure single-direction filter propagation and sub-second calculation speeds.
+      </p>
+    </div>
+
+    <div class="arch-card">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+        <div>
+          <h3 style="margin:0 0 4px; font-size:1.3rem;">Workforce Attrition Star Schema Architecture</h3>
+          <span class="mono" style="font-size:0.82rem; color:var(--teal);">Optimized for Drill-Down, Row-Level Security, &amp; Fact Granularity</span>
+        </div>
+        <div class="mono" style="font-size:0.78rem; background:rgba(20,184,166,0.1); border:1px solid var(--teal); padding:4px 10px; border-radius:4px; color:var(--teal);">
+          1-to-Many Relationships · Single Direction Filter
+        </div>
+      </div>
+
+      <div class="star-schema-grid mono">
+        <!-- Dimension: Dept & Role -->
+        <div class="schema-box">
+          <div class="schema-box-title">
+            <span>Dim_Department_Role</span>
+            <span style="color:var(--mute);">[Dim]</span>
+          </div>
+          <ul class="schema-fields">
+            <li><span>DepartmentID</span><span class="pk">PK (1)</span></li>
+            <li><span>DepartmentName</span><span>Text</span></li>
+            <li><span>JobRole</span><span>Text</span></li>
+            <li><span>JobLevel</span><span>Int</span></li>
+          </ul>
+        </div>
+
+        <!-- FACT TABLE -->
+        <div class="schema-box fact">
+          <div class="schema-box-title" style="color:var(--teal);">
+            <span>Fact_Employee_Monthly</span>
+            <span>[Fact]</span>
+          </div>
+          <ul class="schema-fields">
+            <li><span>SnapshotID</span><span class="pk">PK</span></li>
+            <li><span>EmployeeNumber</span><span class="fk">FK (∞)</span></li>
+            <li><span>DateKey</span><span class="fk">FK (∞)</span></li>
+            <li><span>DepartmentID</span><span class="fk">FK (∞)</span></li>
+            <li><span>MonthlyIncome</span><span class="val">₹ Measure</span></li>
+            <li><span>AttritionFlag</span><span class="val">Binary (0/1)</span></li>
+            <li><span>YearsAtCompany</span><span class="val">Numeric</span></li>
+            <li><span>OverTimeHours</span><span class="val">Numeric</span></li>
+          </ul>
+        </div>
+
+        <!-- Dimension: Date & Time -->
+        <div class="schema-box">
+          <div class="schema-box-title">
+            <span>Dim_Calendar</span>
+            <span style="color:var(--mute);">[Dim]</span>
+          </div>
+          <ul class="schema-fields">
+            <li><span>DateKey</span><span class="pk">PK (1)</span></li>
+            <li><span>Date</span><span>Date</span></li>
+            <li><span>FiscalYear</span><span>Text</span></li>
+            <li><span>FiscalQuarter</span><span>Text</span></li>
+            <li><span>IsWorkday</span><span>Boolean</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top:20px; padding:14px; background:rgba(0,0,0,0.25); border-radius:8px; font-size:0.84rem; color:var(--mute); line-height:1.6;">
+        <strong style="color:var(--ink);">Key Modeling Principle:</strong> All dimension tables filter the fact table via <code>1-to-Many (*)</code> relationships with <strong>single-direction filtering</strong>. This eliminates circular dependencies, maintains referential integrity, and keeps DAX memory usage optimized in VertiPaq.
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive DAX & SQL Code Showcase -->
+  <section class="code-playground-section" id="dax-sql">
+    <div class="section-head">
+      <span class="section-badge mono">CODE TRANSPARENCY</span>
+      <h2 class="section-title">Core DAX &amp; SQL Query Logic</h2>
+      <p class="section-desc">
+        Real formulas and analytical scripts written to solve real data bottlenecks.
+      </p>
+    </div>
+
+    <div class="code-tab-nav mono">
+      <button class="code-tab-btn active" onclick="switchCodeTab('tab-dax')">DAX Measures (Power BI)</button>
+      <button class="code-tab-btn" onclick="switchCodeTab('tab-sql')">SQL Analytical Queries</button>
+      <button class="code-tab-btn" onclick="switchCodeTab('tab-py')">Python Data Pipeline</button>
+    </div>
+
+    <div class="code-snippet-box mono" id="code-snippet-container">
+      <button class="copy-snippet-btn" onclick="copySnippet()">Copy Code</button>
+      <pre id="code-display-block" style="margin:0; overflow-x:auto;">
+<span class="kwd">-- DAX Time Intelligence: YoY Headcount Variance</span>
+YoY Headcount Growth % = 
+VAR CurrentHeadcount = COUNTROWS('Dim_Employees')
+VAR PreviousYearHeadcount = 
+    CALCULATE(
+        COUNTROWS('Dim_Employees'),
+        SAMEPERIODLASTYEAR('Dim_Calendar'[Date])
+    )
+RETURN
+    DIVIDE(
+        CurrentHeadcount - PreviousYearHeadcount,
+        PreviousYearHeadcount,
+        0
+    )
+
+<span class="kwd">-- DAX: Attrition Rate with Dynamic Denominator Context</span>
+Attrition Rate % = 
+VAR TotalDeparted = 
+    CALCULATE(
+        COUNTROWS('Dim_Employees'),
+        'Dim_Employees'[Attrition] = "Yes"
+    )
+VAR ActiveBase = COUNTROWS('Dim_Employees')
+RETURN
+    DIVIDE(TotalDeparted, ActiveBase, 0)
+      </pre>
+    </div>
+  </section>
+
+  <!-- Skills Matrix -->
+  <section class="skills-section" id="skills">
+    <div class="section-head">
+      <span class="section-badge mono">COMPETENCY MATRIX</span>
+      <h2 class="section-title">Technical Skills &amp; Proficiencies</h2>
+      <p class="section-desc">
+        Graded transparently based on hands-on project implementations and commercial workflows.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Power BI &amp; DAX</span>
+          <span class="skill-level-text mono">Advanced</span>
+        </div>
+        <span class="skill-desc">DAX Measures, Power Query (M), Star Schema, Drill-through, KPI cards</span>
+        <div class="skill-meter" style="--bar-color: var(--teal);">
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Advanced Excel</span>
+          <span class="skill-level-text mono">Advanced</span>
+        </div>
+        <span class="skill-desc">Pivot Tables, XLOOKUP, Financial Modeling (CAGR, Sharpe), Slicers</span>
+        <div class="skill-meter" style="--bar-color: var(--teal);">
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">SQL / MySQL</span>
+          <span class="skill-level-text mono">Strong</span>
+        </div>
+        <span class="skill-desc">Joins, CTEs, Window Functions, Group By Aggregations, Schema Design</span>
+        <div class="skill-meter" style="--bar-color: var(--amber);">
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar"></div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Python for Analytics</span>
+          <span class="skill-level-text mono">Working</span>
+        </div>
+        <span class="skill-desc">Pandas, NumPy, Streamlit Apps, PyMuPDF, Scikit-learn Linear Regression</span>
+        <div class="skill-meter" style="--bar-color: var(--amber);">
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar"></div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">MongoDB</span>
+          <span class="skill-level-text mono">Strong</span>
+        </div>
+        <span class="skill-desc">Aggregation pipelines, querying 10K+ document collections, indexing</span>
+        <div class="skill-meter" style="--bar-color: var(--plum);">
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar"></div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">RapidMiner</span>
+          <span class="skill-level-text mono">Strong</span>
+        </div>
+        <span class="skill-desc">K-Means Customer Segmentation, Outlier Detection, Association Rules</span>
+        <div class="skill-meter" style="--bar-color: var(--plum);">
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar active"></div>
+          <div class="skill-meter-bar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Education -->
+  <section class="timeline-section" id="experience">
+    <div class="two-col-grid">
+      <!-- Experience Column -->
+      <div>
+        <div class="section-head" style="margin-bottom:20px;">
+          <span class="section-badge mono">INDUSTRY EXPERIENCE</span>
+          <h2 class="section-title" style="font-size:1.8rem;">Work History</h2>
+        </div>
+
+        <div class="timeline-card">
+          <span class="timeline-date mono">8 Jun 2026 – 7 Sep 2026</span>
+          <h3 class="timeline-role">Data Analyst Intern</h3>
+          <span class="timeline-org">VSD Finserv Pvt. Ltd.</span>
+          <ul class="timeline-bullets">
+            <li>Queried, validated, and processed <strong>10,000+ customer records</strong> using Python and MongoDB.</li>
+            <li>Built 5+ data validation queries and automated email campaign tracking pipelines.</li>
+            <li>Cleaned messy transaction logs to improve campaign conversion and deliverability metrics.</li>
+            <li>Authored complete technical SIP and system architecture documentation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Education Column -->
+      <div id="education">
+        <div class="section-head" style="margin-bottom:20px;">
+          <span class="section-badge mono">ACADEMIC BACKGROUND</span>
+          <h2 class="section-title" style="font-size:1.8rem;">Education &amp; Credentials</h2>
+        </div>
+
+        <div class="timeline-card">
+          <span class="timeline-date mono">Jul 2025 – Apr 2027 (Expected)</span>
+          <h3 class="timeline-role">PGDM in Data Science &amp; Analytics</h3>
+          <span class="timeline-org">Narayana Business School (AICTE Approved)</span>
+          <p style="margin:0; font-size:0.84rem; color:var(--mute);">
+            Score: <strong>73.5% (CGPA 7.35)</strong>. Coursework in Advanced Business Analytics, Statistical Modeling, Machine Learning, Power BI, and Big Data.
+          </p>
+        </div>
+
+        <div class="timeline-card">
+          <span class="timeline-date mono">Aug 2022 – Apr 2025</span>
+          <h3 class="timeline-role">Bachelor of Commerce (B.Com)</h3>
+          <span class="timeline-org">Government College Jaipur, University of Rajasthan</span>
+          <p style="margin:0; font-size:0.84rem; color:var(--mute);">
+            Strong foundation in corporate finance, cost accounting, auditing, and commercial business performance.
+          </p>
+        </div>
+
+        <div class="timeline-card">
+          <span class="timeline-date mono">Certifications</span>
+          <h3 class="timeline-role" style="font-size:0.98rem; margin-bottom:6px;">Verified Learning</h3>
+          <ul class="timeline-bullets">
+            <li><strong>Python &amp; SQL for Data Science</strong> — Scaler</li>
+            <li><strong>Advanced Excel &amp; Financial Analysis</strong> — STP Computer Education</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Projects Authentic Guide (For Recruiters & Self-Improvement) -->
+  <section class="authenticity-section">
+    <div class="guide-box">
+      <div class="section-head" style="margin-bottom:14px;">
+        <span class="section-badge mono" style="color:var(--teal);">HOW I APPROACH ANALYTICS</span>
+        <h3 style="margin:0 0 6px; font-size:1.5rem;">The 4 Pillars of an Authentic Data Portfolio</h3>
+        <p style="margin:0; font-size:0.88rem; color:var(--mute);">
+          Why my projects reflect real business problem-solving rather than textbook tutorials.
+        </p>
+      </div>
+
+      <div class="guide-grid">
+        <div class="guide-item">
+          <h4><span>🎯</span> 1. Business Impact First</h4>
+          <p>Every dashboard is built around a commercial risk or opportunity (e.g. ₹129.8 Cr product margin erosion) rather than just aesthetic charts.</p>
+        </div>
+        <div class="guide-item">
+          <h4><span>📐</span> 2. Dimensional Rigor</h4>
+          <p>Models use explicit Star Schemas with 1-to-many filtering and avoid fragile bi-directional cross-filtering.</p>
+        </div>
+        <div class="guide-item">
+          <h4><span>💻</span> 3. Transparent DAX &amp; Code</h4>
+          <p>All measures, CTEs, and Python scripts are exposed and documented so technical evaluators can audit the logic.</p>
+        </div>
+        <div class="guide-item">
+          <h4><span>🚀</span> 4. Live Working Software</h4>
+          <p>Web applications and AI systems are hosted live on the web with instant recruiter access and open-source GitHub code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership & Beyond Data -->
+  <section class="timeline-section" id="more" style="padding-top:20px;">
+    <div class="section-head">
+      <span class="section-badge mono">BEYOND DATA</span>
+      <h2 class="section-title">Discipline &amp; Leadership</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="timeline-card" style="margin:0;">
+        <span class="timeline-date mono">Dec 2023 · Rajasthan University</span>
+        <h3 class="timeline-role" style="font-size:1.05rem;">🥈 Silver Medalist, Boxing</h3>
+        <p style="margin:0; font-size:0.83rem; color:var(--mute);">
+          Inter-Collegiate Tournament (67–71 kg category). Built extreme mental resilience, discipline, and high performance under pressure.
+        </p>
+      </div>
+      <div class="timeline-card" style="margin:0;">
+        <span class="timeline-date mono">Dec 2025 · Narayana Business School</span>
+        <h3 class="timeline-role" style="font-size:1.05rem;">Sports Committee Member</h3>
+        <p style="margin:0; font-size:0.83rem; color:var(--mute);">
+          Planned, coordinated, and executed campus-wide Kho-Kho and Kabaddi tournaments; managed on-ground schedules and conflict resolution live.
+        </p>
+      </div>
+      <div class="timeline-card" style="margin:0;">
+        <span class="timeline-date mono">Jan 2024 · Govt. of India</span>
+        <h3 class="timeline-role" style="font-size:1.05rem;">National Youth Day Volunteer</h3>
+        <p style="margin:0; font-size:0.83rem; color:var(--mute);">
+          Led public civic awareness programs under Nehru Yuva Kendra Sangathan; active member of Bharat Scouts &amp; Guides.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="section-head">
+      <span class="section-badge mono">GET IN TOUCH</span>
+      <h2 class="section-title">Let's Discuss Data Opportunities</h2>
+      <p class="section-desc">
+        Actively interviewing for Data Analyst, Power BI Developer, and Business Intelligence roles.
+      </p>
+    </div>
+
+    <div class="contact-box mono">
+      <div style="color:var(--teal); margin-bottom:8px;">-- Direct Database Connection Established:</div>
+      <div><strong>SELECT</strong> name, email, phone, location, linkedin, github</div>
+      <div><strong>FROM</strong>   candidates.data_analysts</div>
+      <div><strong>WHERE</strong>  candidate_name = <span style="color:var(--amber);">'Chitransh Sharma'</span>;</div>
+      <br>
+      <div>-- Name:     Chitransh Sharma</div>
+      <div>-- Location: Ahmedabad / Jaipur, India (Open to Relocate &amp; Remote)</div>
+      <div>-- Email:    <a href="mailto:chitransh.pgdmds25@nbs.edu.in" class="contact-link">chitransh.pgdmds25@nbs.edu.in</a></div>
+      <div>-- Phone:    <a href="tel:+919116127014" class="contact-link">+91 91161 27014</a></div>
+      <div>-- LinkedIn: <a href="https://linkedin.com/in/chitransh-sharma-252145390" target="_blank" rel="noopener" class="contact-link">linkedin.com/in/chitransh-sharma-252145390</a></div>
+      <div>-- GitHub:   <a href="https://github.com/chitransh24god" target="_blank" rel="noopener" class="contact-link">github.com/chitransh24god</a></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer mono">
+  <div class="container">
+    <span>Designed &amp; Engineered by Chitransh Sharma · Data Science &amp; Analytics (2025–2027)</span>
+  </div>
+</footer>
+
+<!-- Interactive Project Deep-Dive Modal -->
+<div class="modal-overlay" id="project-modal" onclick="closeModalOnOverlay(event)">
+  <div class="modal-window">
+    <div class="modal-header">
+      <h3 id="modal-title" style="margin:0; font-size:1.25rem;">Project Title</h3>
+      <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <!-- Dynamic modal content inserted here -->
+    </div>
+    <div class="modal-footer" id="modal-footer">
+      <button class="btn btn-outline btn-sm mono" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Theme Toggle */
+const themeBtn = document.getElementById('theme-btn');
+const root = document.documentElement;
+
+function setTheme(theme) {
+  root.setAttribute('data-theme', theme);
+  localStorage.setItem('portfolio-theme', theme);
+}
+
+const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+setTheme(savedTheme);
+
+themeBtn.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+/* Interactive SQL Terminal Data */
+const queryData = {
+  kpis: {
+    query: `<span class="kwd">SELECT</span> metric_name, value, business_context \n<span class="kwd">FROM</span>   analyst_impact_kpis \n<span class="kwd">ORDER BY</span> business_value <span class="kwd">DESC</span>;`,
+    headers: ['metric_name', 'value', 'business_context'],
+    rows: [
+      ['VSD Finserv Ingestion', '10,000+ Records', 'Cleaned MongoDB documents & automated dispatches'],
+      ['ABC Ltd Commercial Analysis', '₹321.7 Cr Modeled', 'Discovered 21.2% margin erosion in Operations'],
+      ['IBM Workforce Attrition', '1,470 Records', '10+ DAX measures & demographic drill-through'],
+      ['DataForge Parsing Engine', '40+ Formats', 'Automated Parquet/SQL to Excel transformation'],
+      ['Know Your Resume AI', '90%+ ATS Accuracy', 'Llama 3.3 70B semantic matching on Groq']
+    ]
+  },
+  pbi: {
+    query: `<span class="kwd">SELECT</span> dashboard_name, primary_kpi, dax_complexity \n<span class="kwd">FROM</span>   power_bi_dashboards;`,
+    headers: ['dashboard_name', 'primary_kpi', 'dax_complexity'],
+    rows: [
+      ['HR Analytics & Retention', 'Attrition Rate %, Avg Tenure', 'Advanced (10+ Measures)'],
+      ['ABC Ltd Commercial Risk', 'Margin Deficit %, Delay %', 'Advanced (Time Intelligence)'],
+      ['Student AI Interaction', 'Engagement Score, Prompt Density', 'Intermediate'],
+      ['Indian Banking Volatility', 'Sharpe Ratio, CAGR, Beta', 'Advanced Statistical']
+    ]
+  },
+  stack: {
+    query: `<span class="kwd">SELECT</span> tool, specialization, mastery_level \n<span class="kwd">FROM</span>   technical_competencies;`,
+    headers: ['tool', 'specialization', 'mastery_level'],
+    rows: [
+      ['Power BI', 'DAX Measures, Data Modeling, Star Schema', 'Advanced (4/4)'],
+      ['Advanced Excel', 'Pivot Tables, Financial Modeling, Slicers', 'Advanced (4/4)'],
+      ['SQL / MySQL', 'Window Functions, CTEs, Joins', 'Strong (3/4)'],
+      ['Python', 'Pandas, Streamlit Web Apps, PyMuPDF', 'Working (3/4)'],
+      ['MongoDB', 'Document Aggregation, Validation Queries', 'Strong (3/4)']
+    ]
+  },
+  vsd: {
+    query: `<span class="kwd">SELECT</span> internship_role, company, milestone \n<span class="kwd">FROM</span>   vsd_finserv_records;`,
+    headers: ['internship_role', 'company', 'milestone'],
+    rows: [
+      ['Data Analyst Intern', 'VSD Finserv Pvt. Ltd.', 'Processed 10K+ customer files with Python'],
+      ['Automation Engineer', 'VSD Finserv Pvt. Ltd.', 'Built 5+ campaign email workflows'],
+      ['SIP Researcher', 'NBS Academic Track', 'Authored full systems architecture report']
+    ]
+  }
+};
+
+function runQuery(key) {
+  document.querySelectorAll('.query-chip').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const data = queryData[key];
+  if (!data) return;
+
+  document.getElementById('query-display').innerHTML = data.query;
+  
+  let html = '<table><thead><tr>';
+  data.headers.forEach(h => html += `<th>${h}</th>`);
+  html += '</tr></thead><tbody>';
+  
+  data.rows.forEach(r => {
+    html += '<tr>';
+    r.forEach(val => html += `<td>${val}</td>`);
+    html += '</tr>';
+  });
+  
+  html += '</tbody></table>';
+  document.getElementById('query-results-area').innerHTML = html;
+}
+
+// Initial Query Load
+runQuery('kpis');
+
+/* Project Filter */
+function filterProjects(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach(card => {
+    if (cat === 'all') {
+      card.style.display = 'flex';
+    } else {
+      const match = card.getAttribute('data-category') === cat;
+      card.style.display = match ? 'flex' : 'none';
+    }
+  });
+}
+
+/* Code Drawer Toggle */
+function toggleCodeDrawer(id) {
+  const drawer = document.getElementById(id);
+  drawer.classList.toggle('open');
+}
+
+/* Code Snippet Tabs */
+const codeSnippets = {
+  'tab-dax': `-- DAX Time Intelligence: YoY Headcount Variance
+YoY Headcount Growth % = 
+VAR CurrentHeadcount = COUNTROWS('Dim_Employees')
+VAR PreviousYearHeadcount = 
+    CALCULATE(
+        COUNTROWS('Dim_Employees'),
+        SAMEPERIODLASTYEAR('Dim_Calendar'[Date])
+    )
+RETURN
+    DIVIDE(
+        CurrentHeadcount - PreviousYearHeadcount,
+        PreviousYearHeadcount,
+        0
+    )
+
+-- DAX: Attrition Rate with Dynamic Denominator Context
+Attrition Rate % = 
+VAR TotalDeparted = 
+    CALCULATE(
+        COUNTROWS('Dim_Employees'),
+        'Dim_Employees'[Attrition] = "Yes"
+    )
+VAR ActiveBase = COUNTROWS('Dim_Employees')
+RETURN
+    DIVIDE(TotalDeparted, ActiveBase, 0)`,
+
+  'tab-sql': `-- Analytical SQL: Customer Margin Leakage & Late Delivery Identification
+WITH CategoryFulfillment AS (
+    SELECT 
+        o.category_id,
+        c.category_name,
+        COUNT(o.order_id) AS total_orders,
+        SUM(CASE WHEN o.delivery_days > 3 THEN 1 ELSE 0 END) AS delayed_orders,
+        SUM(o.net_revenue) AS total_revenue,
+        SUM(o.operating_profit) AS total_profit
+    FROM fact_orders o
+    JOIN dim_categories c ON o.category_id = c.category_id
+    GROUP BY o.category_id, c.category_name
+)
+SELECT 
+    category_name,
+    total_revenue,
+    ROUND((total_profit / total_revenue) * 100, 2) AS profit_margin_pct,
+    ROUND((delayed_orders * 100.0 / total_orders), 1) AS delay_rate_pct,
+    DENSE_RANK() OVER (ORDER BY (total_profit / total_revenue) ASC) AS margin_rank
+FROM CategoryFulfillment
+ORDER BY total_revenue DESC;`,
+
+  'tab-py': `# Python & PyMuPDF: In-Memory Multi-Format Document Ingestion
+import fitz # PyMuPDF
+import re
+
+def extract_clean_resume_text(pdf_bytes: bytes) -> str:
+    """Extracts raw text from digital PDF bytes and cleans whitespace."""
+    doc = fitz.open(stream=pdf_bytes, filetype="pdf")
+    full_text = []
+    
+    for page_num in range(len(doc)):
+        page = doc.load_page(page_num)
+        text = page.get_text("text")
+        # Normalize non-breaking spaces and redundant blank lines
+        clean = re.sub(r'\\s+', ' ', text).strip()
+        full_text.append(clean)
+        
+    doc.close()
+    return "\\n\\n".join(full_text)`
+};
+
+let currentSnippetTab = 'tab-dax';
+
+function switchCodeTab(tab) {
+  document.querySelectorAll('.code-tab-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  currentSnippetTab = tab;
+  document.getElementById('code-display-block').textContent = codeSnippets[tab];
+}
+
+function copySnippet() {
+  const code = codeSnippets[currentSnippetTab];
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.querySelector('.copy-snippet-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy Code', 2000);
+  });
+}
+
+/* Modal Content Store */
+const modalDetails = {
+  hr: {
+    title: 'HR Analytics & Employee Retention Dashboard',
+    body: `
+      <div class="metric-callout mono">
+        <strong>Primary Goal:</strong> Provide HR leadership with early-warning indicators on voluntary employee turnover to protect institutional knowledge.
+      </div>
+      <h4>Dataset &amp; Scope</h4>
+      <p>1,470 employee records across Research &amp; Development, Sales, and Human Resources. Evaluated 35 variables including OverTime, MonthlyIncome, JobRole, and YearsAtCompany.</p>
+      <h4>Key DAX Measures Built:</h4>
+      <ul>
+        <li><code>[Attrition Rate %]</code> — Dynamic denominator adapting to slicer context.</li>
+        <li><code>[Average Tenure in Role]</code> — Measures stagnancy risk.</li>
+        <li><code>[OverTime Turnover Factor]</code> — Evaluates attrition variance between overtime vs non-overtime cohorts.</li>
+      </ul>
+      <h4>Core Actionable Insight:</h4>
+      <p>Sales Executives and Laboratory Technicians working mandatory overtime exhibited a <strong>31.2% attrition rate</strong> compared to 10.4% in non-overtime peers. Recommended establishing tenure milestone interventions at the 18-month mark.</p>
+    `,
+    footer: `
+      <a href="https://github.com/chitransh24god" target="_blank" class="btn btn-primary btn-sm mono">View GitHub Repo ↗</a>
+      <button class="btn btn-outline btn-sm mono" onclick="closeModal()">Close</button>
+    `
+  },
+  abc: {
+    title: 'ABC Ltd Commercial Performance Note (FY 2023-24)',
+    body: `
+      <div class="metric-callout mono">
+        <strong>Executive Scope:</strong> ₹321.7 Cr net revenue across 7,535 transactions; overall operating profit margin of 51.8%.
+      </div>
+      <h4>Strategic Findings:</h4>
+      <ul>
+        <li><strong>Structural Margin Erosion:</strong> Operations product category accounted for ₹129.8 Cr (40.3% of revenue) but generated an average margin of only <strong>21.2%</strong> (vs 57.4% company-wide).</li>
+        <li><strong>Fulfillment Bottleneck:</strong> 33.8% of all shipments suffered delivery delays, predominantly in Tier 3 cities averaging 4.93 days lead time.</li>
+        <li><strong>Portfolio Subsidization:</strong> Finance (83.8% margin) and IT Services (64.9%) were masking logistical losses in physical distribution.</li>
+      </ul>
+    `,
+    footer: `
+      <button class="btn btn-outline btn-sm mono" onclick="closeModal()">Close</button>
+    `
+  },
+  dataforge: {
+    title: 'DataForge — Universal Ingestion Architecture',
+    body: `
+      <div class="metric-callout mono">
+        <strong>Zero Configuration Conversion:</strong> Ingests complex raw dumps and outputs client-ready, multi-tab Excel workbooks.
+      </div>
+      <h4>Supported Ingestion:</h4>
+      <p>Parquet, JSON/JSONL, SQL dumps, Feather, CSV, TSV, XML, and raw text clipboard pastes.</p>
+      <h4>Automated Data Cleansing Steps:</h4>
+      <ol>
+        <li>Header normalization (snake_case conversion, removing illegal punctuation).</li>
+        <li>Type inference: Auto-detecting ISO dates, floats, and integer currencies.</li>
+        <li>Deduplication &amp; null imputation summaries.</li>
+        <li>Multi-sheet Excel workbook export with a formatted metadata summary cover sheet.</li>
+      </ol>
+    `,
+    footer: `
+      <a href="https://github.com/chitransh24god" target="_blank" class="btn btn-primary btn-sm mono">GitHub Repository ↗</a>
+      <button class="btn btn-outline btn-sm mono" onclick="closeModal()">Close</button>
+    `
+  },
+  aiwise: {
+    title: 'AIWise Consulting — ROI Decision Platform',
+    body: `
+      <div class="metric-callout mono">
+        <strong>Premise:</strong> "Don't adopt AI because of hype. Adopt AI where unit economics make financial sense."
+      </div>
+      <h4>Platform Scoring Logic:</h4>
+      <ul>
+        <li><strong>Business Impact (30%):</strong> Revenue expansion or critical risk mitigation.</li>
+        <li><strong>Repetitive Labor (25%):</strong> Hours spent per week on rule-based tasks.</li>
+        <li><strong>Cost Efficiency (20%):</strong> Capex + token opex vs existing FTE labor overhead.</li>
+        <li><strong>Data Readiness (15%):</strong> Structured availability of historical clean records.</li>
+        <li><strong>Technical Feasibility (10%):</strong> API integration complexity.</li>
+      </ul>
+    `,
+    footer: `
+      <button class="btn btn-outline btn-sm mono" onclick="closeModal()">Close</button>
+    `
+  },
+  student: {
+    title: 'Student AI Interaction Analysis',
+    body: `
+      <p>Analyzed student query logs with generative AI tools to uncover how prompt depth impacts problem-solving outcomes.</p>
+      <h4>Dashboard Visuals:</h4>
+      <ul>
+        <li>Prompt complexity vs session resolution duration.</li>
+        <li>Student satisfaction rating segmented by subject area.</li>
+        <li>Heatmap of peak interaction hours during exam prep periods.</li>
+      </ul>
+    `,
+    footer: `<button class="btn btn-outline btn-sm mono" onclick="closeModal()">Close</button>`
+  },
+  banking: {
+    title: 'Major Indian Banks Stock & Risk Modeling',
+    body: `
+      <p>Comparative quantitative study of SBI, HDFC, ICICI, and Axis Bank benchmarked against the BSE Sensex.</p>
+      <h4>Calculated Financial Metrics:</h4>
+      <ul>
+        <li><strong>CAGR:</strong> Compound Annual Growth Rate over multi-year holding windows.</li>
+        <li><strong>Sharpe Ratio:</strong> Risk-adjusted excess return per unit of standard deviation.</li>
+        <li><strong>Beta:</strong> Sensitivity and systematic market risk relative to the Sensex.</li>
+      </ul>
+    `,
+    footer: `<button class="btn btn-outline btn-sm mono" onclick="closeModal()">Close</button>`
+  },
+  abb: {
+    title: 'ABB Analyzer — Average Bank Balance System',
+    body: `
+      <p>Automated extraction pipeline for financial institutions and SME lenders.</p>
+      <h4>Underwriting Rules:</h4>
+      <ul>
+        <li>Extracts daily end-of-day balances from scanned or digital PDF statements.</li>
+        <li>Calculates average monthly balance (ABB) to assess debt servicing capacity.</li>
+        <li>Detects inward/outward cheque return penalties and negative balance days.</li>
+      </ul>
+    `,
+    footer: `<button class="btn btn-outline btn-sm mono" onclick="closeModal()">Close</button>`
+  }
+};
+
+function openModal(key) {
+  const data = modalDetails[key];
+  if (!data) return;
+
+  document.getElementById('modal-title').textContent = data.title;
+  document.getElementById('modal-body').innerHTML = data.body;
+  document.getElementById('modal-footer').innerHTML = data.footer;
+  document.getElementById('project-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('project-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnOverlay(e) {
+  if (e.target.id === 'project-modal') {
+    closeModal();
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+
+</body>
+</html>
