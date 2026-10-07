@@ -183,6 +183,112 @@ nav.main-nav a:hover, nav.main-nav a:focus-visible {
   transform: rotate(15deg);
 }
 
+.mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper-elevated);
+  color: var(--ink);
+  cursor: pointer;
+}
+.mobile-menu-btn:hover,
+.mobile-menu-btn:focus-visible {
+  border-color: var(--teal);
+  color: var(--teal);
+  outline: none;
+}
+.mobile-menu-btn svg { width: 20px; height: 20px; }
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(2, 6, 23, 0.62);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.mobile-menu-drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 160;
+  width: min(82vw, 320px);
+  padding: 22px 20px;
+  background: var(--paper-elevated);
+  border-right: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-102%);
+  transition: transform 0.25s ease;
+}
+.mobile-menu-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.mobile-menu-drawer-header span {
+  color: var(--teal);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+}
+.mobile-menu-close {
+  border: 0;
+  background: transparent;
+  color: var(--mute);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.mobile-menu-close:hover,
+.mobile-menu-close:focus-visible { color: var(--ink); outline: none; }
+.mobile-menu-links {
+  display: grid;
+  gap: 4px;
+  padding-top: 18px;
+}
+.mobile-menu-links a {
+  display: block;
+  padding: 13px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.mobile-menu-links a:hover,
+.mobile-menu-links a:focus-visible {
+  background: var(--teal-glow);
+  color: var(--teal);
+  outline: none;
+}
+body.menu-open { overflow: hidden; }
+body.menu-open .mobile-menu-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.menu-open .mobile-menu-drawer { transform: translateX(0); }
+
+@media (max-width: 900px) {
+  .nav-wrapper { padding: 11px 0; }
+  nav.main-nav { display: none; }
+  .mobile-menu-btn { display: inline-flex; }
+  .nav-actions { margin-left: auto; }
+  .nav-actions .btn { display: none; }
+  .nav-wrapper > .mobile-menu-btn { order: 3; margin-left: 10px; }
+}
+
+@media (max-width: 520px) {
+  .container { padding: 0 16px; }
+  .brand-badge { font-size: 0.92rem; }
+  .theme-toggle-btn { width: 38px; height: 38px; }
+  .mobile-menu-btn { width: 38px; height: 38px; }
+  .hero { padding-top: 34px; }
+}
+
 /* Hero Section */
 .hero {
   padding: 60px 0 40px;
@@ -1101,8 +1207,30 @@ footer.site-footer {
         GitHub ↗
       </a>
     </div>
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-controls="mobile-menu-drawer" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
   </div>
 </header>
+
+<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+<aside class="mobile-menu-drawer" id="mobile-menu-drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="mobile-menu-drawer-header">
+    <span class="mono">NAVIGATION</span>
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close navigation menu">&times;</button>
+  </div>
+  <nav class="mobile-menu-links mono">
+    <a href="#projects">projects</a>
+    <a href="#dax-sql">dax &amp; sql</a>
+    <a href="#modeling">data model</a>
+    <a href="#skills">skills</a>
+    <a href="#experience">experience</a>
+    <a href="#contact">contact</a>
+    <a href="https://github.com/chitransh24god" target="_blank" rel="noopener">GitHub ↗</a>
+  </nav>
+</aside>
 
 <main class="container">
 
@@ -1684,6 +1812,29 @@ setTheme(savedTheme);
 themeBtn.addEventListener('click', () => {
   const current = root.getAttribute('data-theme');
   setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+/* Mobile Navigation Drawer */
+const mobileMenuButton = document.getElementById('mobile-menu-btn');
+const mobileMenuClose = document.getElementById('mobile-menu-close');
+const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+
+function setMobileMenu(open) {
+  document.body.classList.toggle('menu-open', open);
+  mobileMenuButton.setAttribute('aria-expanded', String(open));
+  mobileMenuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+  mobileMenuDrawer.setAttribute('aria-hidden', String(!open));
+}
+
+mobileMenuButton.addEventListener('click', () => setMobileMenu(true));
+mobileMenuClose.addEventListener('click', () => setMobileMenu(false));
+mobileMenuOverlay.addEventListener('click', () => setMobileMenu(false));
+mobileMenuDrawer.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', () => setMobileMenu(false));
+});
+document.addEventListener('keydown', (keyboardEvent) => {
+  if (keyboardEvent.key === 'Escape') setMobileMenu(false);
 });
 
 /* Interactive SQL Terminal Data */
