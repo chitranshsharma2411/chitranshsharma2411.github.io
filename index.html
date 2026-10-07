@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Chitransh Sharma | Data Analyst & Power BI Developer</title>
-<meta name="description" content="Portfolio of Chitransh Sharma — Data Analyst & Power BI Developer with a Commerce background and PGDM in Data Science. Explore live Power BI dashboards, Streamlit web apps, DAX measures, and SQL queries.">
+<title>Chitransh Sharma | Data Analyst & Decision Systems Builder</title>
+<meta name="description" content="Portfolio of Chitransh Sharma — Data Analyst and decision-systems builder creating finance, weather, BI, and Python analytics products.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -220,6 +220,49 @@ nav.main-nav a:hover, nav.main-nav a:focus-visible {
   background: linear-gradient(135deg, var(--teal), var(--blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.hero-visual {
+  display: grid;
+  gap: 18px;
+}
+.profile-card {
+  position: relative;
+  min-height: 320px;
+  border: 1px solid rgba(20, 184, 166, 0.45);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #07111f;
+  box-shadow: 0 0 36px rgba(20, 184, 166, 0.14), var(--shadow-lg);
+}
+.profile-card::after {
+  content: "DATA / DECISIONS / IMPACT";
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  color: #8be8dc;
+  font: 600 0.68rem/1 "IBM Plex Mono", monospace;
+  letter-spacing: 0.14em;
+  text-shadow: 0 0 12px rgba(20, 184, 166, 0.8);
+}
+.profile-card img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  object-position: center 30%;
+}
+.profile-label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 10px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 99px;
+  background: rgba(7, 17, 31, 0.76);
+  color: #7dd3fc;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
 }
 .hero p.bio {
   font-size: 1.12rem;
@@ -622,6 +665,20 @@ nav.main-nav a:hover, nav.main-nav a:focus-visible {
   gap: 10px;
   flex-wrap: wrap;
   align-items: center;
+}
+.live-link {
+  margin-left: auto;
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.live-link:hover { color: var(--blue); text-decoration: underline; }
+.project-card.is-live {
+  border-color: rgba(20, 184, 166, 0.42);
+}
+.project-card.is-live .card-topbar {
+  background: linear-gradient(90deg, rgba(20,184,166,0.08), transparent);
 }
 
 /* Code Drawer Accordion */
@@ -1076,25 +1133,31 @@ footer.site-footer {
       </div>
     </div>
 
-    <!-- Interactive SQL Query Terminal -->
-    <div class="terminal-window">
-      <div class="terminal-topbar">
-        <div class="window-controls">
-          <div class="control-dot"></div>
-          <div class="control-dot"></div>
-          <div class="control-dot"></div>
-        </div>
-        <div class="terminal-title mono">postgres@chitransh-dw: ~</div>
+    <div class="hero-visual">
+      <div class="profile-card">
+        <img src="profile.png" alt="Chitransh Sharma in a navy suit, with data visualisation graphics">
+        <span class="profile-label mono">CHITRANSH / ANALYTICS</span>
       </div>
-      <div class="terminal-body mono">
+
+      <!-- Interactive SQL Query Terminal -->
+      <div class="terminal-window">
+        <div class="terminal-topbar">
+          <div class="window-controls">
+            <div class="control-dot"></div>
+            <div class="control-dot"></div>
+            <div class="control-dot"></div>
+          </div>
+          <div class="terminal-title mono">postgres@chitransh-dw: ~</div>
+        </div>
+        <div class="terminal-body mono">
         <div class="query-prompt">
           <span class="user">recruiter</span>@<span class="db">portfolio_db</span>=# click a query to run:
         </div>
         <div class="preset-queries">
-          <button class="query-chip active" onclick="runQuery('kpis')">SELECT * FROM impact_kpis;</button>
-          <button class="query-chip" onclick="runQuery('pbi')">SELECT * FROM power_bi_dashboards;</button>
-          <button class="query-chip" onclick="runQuery('stack')">SELECT tool, mastery FROM tech_stack;</button>
-          <button class="query-chip" onclick="runQuery('vsd')">SELECT * FROM internship_vsd;</button>
+          <button class="query-chip active" onclick="runQuery('kpis', event)">SELECT * FROM impact_kpis;</button>
+          <button class="query-chip" onclick="runQuery('pbi', event)">SELECT * FROM power_bi_dashboards;</button>
+          <button class="query-chip" onclick="runQuery('stack', event)">SELECT tool, mastery FROM tech_stack;</button>
+          <button class="query-chip" onclick="runQuery('vsd', event)">SELECT * FROM internship_vsd;</button>
         </div>
         <div class="query-editor" id="query-display"><span class="kwd">SELECT</span> metric_name, value, business_context 
 <span class="kwd">FROM</span>   analyst_impact_kpis 
@@ -1143,20 +1206,75 @@ footer.site-footer {
       <span class="section-badge mono">PORTFOLIO ARTIFACTS</span>
       <h2 class="section-title">Featured Projects &amp; Live Systems</h2>
       <p class="section-desc">
-        Explore interactive Power BI reports, AI-driven data tools, and financial models built with real business logic and verified datasets.
+        Explore live products and analytical systems built to make financial and operational data easier to act on.
       </p>
     </div>
 
     <!-- Filter Bar -->
     <div class="filter-bar mono">
-      <button class="filter-btn active" onclick="filterProjects('all')">All Work (8)</button>
+      <button class="filter-btn active" onclick="filterProjects('all')">All Work (9)</button>
       <button class="filter-btn" onclick="filterProjects('pbi')">Power BI Dashboards (3)</button>
       <button class="filter-btn" onclick="filterProjects('app')">Web Apps &amp; Tools (3)</button>
-      <button class="filter-btn" onclick="filterProjects('python')">Python &amp; ML (2)</button>
+      <button class="filter-btn" onclick="filterProjects('python')">Python &amp; ML (1)</button>
       <button class="filter-btn" onclick="filterProjects('finance')">Financial &amp; Operations (2)</button>
     </div>
 
     <div class="projects-grid" id="projects-container">
+
+      <!-- PROJECT 0: ABB Analyser -->
+      <article class="project-card is-live" data-category="finance">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-biz mono">Live Finance App</span>
+          <span class="status-pill mono">Deployed</span>
+        </div>
+        <div class="card-content">
+          <h3>ABB Analyser</h3>
+          <span class="card-subtitle">Interactive financial performance and business analysis</span>
+          <div class="metric-callout mono">
+            <strong>Live project:</strong> Turn financial statements and business metrics into clear, decision-ready analysis.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Focus:</strong> Financial trend analysis, profitability signals, and business performance interpretation.</li>
+            <li><strong>Experience:</strong> Explore the deployed analyser to see the complete workflow and visual output.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Finance</span>
+            <span class="tech-tag">Data Analysis</span>
+            <span class="tech-tag">Interactive Dashboard</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://chitransh24god.github.io/Finance-Analyser/" target="_blank" rel="noopener" class="btn btn-primary btn-sm mono">Open ABB Analyser ↗</a>
+          <a href="https://github.com/chitransh24god/Finance-Analyser" target="_blank" rel="noopener" class="live-link mono">View source ↗</a>
+        </div>
+      </article>
+
+      <!-- PROJECT 0B: SkyPulse Weather Forecast -->
+      <article class="project-card is-live" data-category="app">
+        <div class="card-topbar">
+          <span class="card-category-badge badge-app mono">Live Streamlit App</span>
+          <span class="status-pill mono">Deployed</span>
+        </div>
+        <div class="card-content">
+          <h3>SkyPulse Weather Forecast App</h3>
+          <span class="card-subtitle">A practical weather intelligence experience</span>
+          <div class="metric-callout mono">
+            <strong>Live project:</strong> Get a clear, accessible view of weather conditions and forecasts through a focused web app.
+          </div>
+          <ul class="project-bullets">
+            <li><strong>Product thinking:</strong> Presents weather information in a simple interface designed for quick decisions.</li>
+            <li><strong>Build:</strong> Streamlit-powered application with a clean, interactive data experience.</li>
+          </ul>
+          <div class="tech-tags mono">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Weather Data</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="https://skypulse-weather.streamlit.app/" target="_blank" rel="noopener" class="btn btn-primary btn-sm mono">Open SkyPulse ↗</a>
+        </div>
+      </article>
 
       <!-- PROJECT 1: HR Analytics Power BI -->
       <article class="project-card" data-category="pbi">
@@ -1412,255 +1530,6 @@ def calculate_payback_period(annual_labor_savings, initial_capex, monthly_cloud_
         </div>
       </article>
 
-      <!-- PROJECT 8: ABB Analyzer (Average Bank Balance) -->
-      <article class="project-card" data-category="python">
-        <div class="card-topbar">
-          <span class="card-category-badge badge-py mono">Python Automation</span>
-          <span class="status-pill mono">Credit Underwriting</span>
-        </div>
-        <div class="card-content">
-          <h3>ABB Analyzer — Automated Bank Statement Engine</h3>
-          <span class="card-subtitle">Credit Risk &amp; Loan Underwriting System</span>
-          <div class="metric-callout mono">
-            <strong>Efficiency:</strong> Eliminated manual PDF transaction entry; extracts, categorizes, and calculates monthly ABB in under 5 seconds.
-          </div>
-          <ul class="project-bullets">
-            <li><strong>Parser:</strong> Extracts raw tables and transaction descriptions from multi-page scanned/digital bank statements.</li>
-            <li><strong>Underwriting Logic:</strong> Flags cheque bounces, low balance breaches, and automated EMI debits for loan sanctioning.</li>
-          </ul>
-          <div class="tech-tags mono">
-            <span class="tech-tag">Python</span>
-            <span class="tech-tag">PDF Parsing</span>
-            <span class="tech-tag">Credit Analytics</span>
-            <span class="tech-tag">Automation</span>
-          </div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-outline btn-sm mono" onclick="openModal('abb')">🔍 Underwriting Flow</button>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- Star Schema & Data Modeling Architecture Spotlight -->
-  <section class="architecture-section" id="modeling">
-    <div class="section-head">
-      <span class="section-badge mono">PROOF OF WORK</span>
-      <h2 class="section-title">Dimensional Modeling &amp; Architecture</h2>
-      <p class="section-desc">
-        How I structure clean, high-performance Star Schemas in Power BI to ensure single-direction filter propagation and sub-second calculation speeds.
-      </p>
-    </div>
-
-    <div class="arch-card">
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
-        <div>
-          <h3 style="margin:0 0 4px; font-size:1.3rem;">Workforce Attrition Star Schema Architecture</h3>
-          <span class="mono" style="font-size:0.82rem; color:var(--teal);">Optimized for Drill-Down, Row-Level Security, &amp; Fact Granularity</span>
-        </div>
-        <div class="mono" style="font-size:0.78rem; background:rgba(20,184,166,0.1); border:1px solid var(--teal); padding:4px 10px; border-radius:4px; color:var(--teal);">
-          1-to-Many Relationships · Single Direction Filter
-        </div>
-      </div>
-
-      <div class="star-schema-grid mono">
-        <!-- Dimension: Dept & Role -->
-        <div class="schema-box">
-          <div class="schema-box-title">
-            <span>Dim_Department_Role</span>
-            <span style="color:var(--mute);">[Dim]</span>
-          </div>
-          <ul class="schema-fields">
-            <li><span>DepartmentID</span><span class="pk">PK (1)</span></li>
-            <li><span>DepartmentName</span><span>Text</span></li>
-            <li><span>JobRole</span><span>Text</span></li>
-            <li><span>JobLevel</span><span>Int</span></li>
-          </ul>
-        </div>
-
-        <!-- FACT TABLE -->
-        <div class="schema-box fact">
-          <div class="schema-box-title" style="color:var(--teal);">
-            <span>Fact_Employee_Monthly</span>
-            <span>[Fact]</span>
-          </div>
-          <ul class="schema-fields">
-            <li><span>SnapshotID</span><span class="pk">PK</span></li>
-            <li><span>EmployeeNumber</span><span class="fk">FK (∞)</span></li>
-            <li><span>DateKey</span><span class="fk">FK (∞)</span></li>
-            <li><span>DepartmentID</span><span class="fk">FK (∞)</span></li>
-            <li><span>MonthlyIncome</span><span class="val">₹ Measure</span></li>
-            <li><span>AttritionFlag</span><span class="val">Binary (0/1)</span></li>
-            <li><span>YearsAtCompany</span><span class="val">Numeric</span></li>
-            <li><span>OverTimeHours</span><span class="val">Numeric</span></li>
-          </ul>
-        </div>
-
-        <!-- Dimension: Date & Time -->
-        <div class="schema-box">
-          <div class="schema-box-title">
-            <span>Dim_Calendar</span>
-            <span style="color:var(--mute);">[Dim]</span>
-          </div>
-          <ul class="schema-fields">
-            <li><span>DateKey</span><span class="pk">PK (1)</span></li>
-            <li><span>Date</span><span>Date</span></li>
-            <li><span>FiscalYear</span><span>Text</span></li>
-            <li><span>FiscalQuarter</span><span>Text</span></li>
-            <li><span>IsWorkday</span><span>Boolean</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div style="margin-top:20px; padding:14px; background:rgba(0,0,0,0.25); border-radius:8px; font-size:0.84rem; color:var(--mute); line-height:1.6;">
-        <strong style="color:var(--ink);">Key Modeling Principle:</strong> All dimension tables filter the fact table via <code>1-to-Many (*)</code> relationships with <strong>single-direction filtering</strong>. This eliminates circular dependencies, maintains referential integrity, and keeps DAX memory usage optimized in VertiPaq.
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive DAX & SQL Code Showcase -->
-  <section class="code-playground-section" id="dax-sql">
-    <div class="section-head">
-      <span class="section-badge mono">CODE TRANSPARENCY</span>
-      <h2 class="section-title">Core DAX &amp; SQL Query Logic</h2>
-      <p class="section-desc">
-        Real formulas and analytical scripts written to solve real data bottlenecks.
-      </p>
-    </div>
-
-    <div class="code-tab-nav mono">
-      <button class="code-tab-btn active" onclick="switchCodeTab('tab-dax')">DAX Measures (Power BI)</button>
-      <button class="code-tab-btn" onclick="switchCodeTab('tab-sql')">SQL Analytical Queries</button>
-      <button class="code-tab-btn" onclick="switchCodeTab('tab-py')">Python Data Pipeline</button>
-    </div>
-
-    <div class="code-snippet-box mono" id="code-snippet-container">
-      <button class="copy-snippet-btn" onclick="copySnippet()">Copy Code</button>
-      <pre id="code-display-block" style="margin:0; overflow-x:auto;">
-<span class="kwd">-- DAX Time Intelligence: YoY Headcount Variance</span>
-YoY Headcount Growth % = 
-VAR CurrentHeadcount = COUNTROWS('Dim_Employees')
-VAR PreviousYearHeadcount = 
-    CALCULATE(
-        COUNTROWS('Dim_Employees'),
-        SAMEPERIODLASTYEAR('Dim_Calendar'[Date])
-    )
-RETURN
-    DIVIDE(
-        CurrentHeadcount - PreviousYearHeadcount,
-        PreviousYearHeadcount,
-        0
-    )
-
-<span class="kwd">-- DAX: Attrition Rate with Dynamic Denominator Context</span>
-Attrition Rate % = 
-VAR TotalDeparted = 
-    CALCULATE(
-        COUNTROWS('Dim_Employees'),
-        'Dim_Employees'[Attrition] = "Yes"
-    )
-VAR ActiveBase = COUNTROWS('Dim_Employees')
-RETURN
-    DIVIDE(TotalDeparted, ActiveBase, 0)
-      </pre>
-    </div>
-  </section>
-
-  <!-- Skills Matrix -->
-  <section class="skills-section" id="skills">
-    <div class="section-head">
-      <span class="section-badge mono">COMPETENCY MATRIX</span>
-      <h2 class="section-title">Technical Skills &amp; Proficiencies</h2>
-      <p class="section-desc">
-        Graded transparently based on hands-on project implementations and commercial workflows.
-      </p>
-    </div>
-
-    <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-header">
-          <span class="skill-name">Power BI &amp; DAX</span>
-          <span class="skill-level-text mono">Advanced</span>
-        </div>
-        <span class="skill-desc">DAX Measures, Power Query (M), Star Schema, Drill-through, KPI cards</span>
-        <div class="skill-meter" style="--bar-color: var(--teal);">
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-header">
-          <span class="skill-name">Advanced Excel</span>
-          <span class="skill-level-text mono">Advanced</span>
-        </div>
-        <span class="skill-desc">Pivot Tables, XLOOKUP, Financial Modeling (CAGR, Sharpe), Slicers</span>
-        <div class="skill-meter" style="--bar-color: var(--teal);">
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-header">
-          <span class="skill-name">SQL / MySQL</span>
-          <span class="skill-level-text mono">Strong</span>
-        </div>
-        <span class="skill-desc">Joins, CTEs, Window Functions, Group By Aggregations, Schema Design</span>
-        <div class="skill-meter" style="--bar-color: var(--amber);">
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar"></div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-header">
-          <span class="skill-name">Python for Analytics</span>
-          <span class="skill-level-text mono">Working</span>
-        </div>
-        <span class="skill-desc">Pandas, NumPy, Streamlit Apps, PyMuPDF, Scikit-learn Linear Regression</span>
-        <div class="skill-meter" style="--bar-color: var(--amber);">
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar"></div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-header">
-          <span class="skill-name">MongoDB</span>
-          <span class="skill-level-text mono">Strong</span>
-        </div>
-        <span class="skill-desc">Aggregation pipelines, querying 10K+ document collections, indexing</span>
-        <div class="skill-meter" style="--bar-color: var(--plum);">
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar"></div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-header">
-          <span class="skill-name">RapidMiner</span>
-          <span class="skill-level-text mono">Strong</span>
-        </div>
-        <span class="skill-desc">K-Means Customer Segmentation, Outlier Detection, Association Rules</span>
-        <div class="skill-meter" style="--bar-color: var(--plum);">
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar active"></div>
-          <div class="skill-meter-bar"></div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1724,38 +1593,6 @@ RETURN
     </div>
   </section>
 
-  <!-- What Makes Projects Authentic Guide (For Recruiters & Self-Improvement) -->
-  <section class="authenticity-section">
-    <div class="guide-box">
-      <div class="section-head" style="margin-bottom:14px;">
-        <span class="section-badge mono" style="color:var(--teal);">HOW I APPROACH ANALYTICS</span>
-        <h3 style="margin:0 0 6px; font-size:1.5rem;">The 4 Pillars of an Authentic Data Portfolio</h3>
-        <p style="margin:0; font-size:0.88rem; color:var(--mute);">
-          Why my projects reflect real business problem-solving rather than textbook tutorials.
-        </p>
-      </div>
-
-      <div class="guide-grid">
-        <div class="guide-item">
-          <h4><span>🎯</span> 1. Business Impact First</h4>
-          <p>Every dashboard is built around a commercial risk or opportunity (e.g. ₹129.8 Cr product margin erosion) rather than just aesthetic charts.</p>
-        </div>
-        <div class="guide-item">
-          <h4><span>📐</span> 2. Dimensional Rigor</h4>
-          <p>Models use explicit Star Schemas with 1-to-many filtering and avoid fragile bi-directional cross-filtering.</p>
-        </div>
-        <div class="guide-item">
-          <h4><span>💻</span> 3. Transparent DAX &amp; Code</h4>
-          <p>All measures, CTEs, and Python scripts are exposed and documented so technical evaluators can audit the logic.</p>
-        </div>
-        <div class="guide-item">
-          <h4><span>🚀</span> 4. Live Working Software</h4>
-          <p>Web applications and AI systems are hosted live on the web with instant recruiter access and open-source GitHub code.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Leadership & Beyond Data -->
   <section class="timeline-section" id="more" style="padding-top:20px;">
     <div class="section-head">
@@ -1814,11 +1651,6 @@ RETURN
 
 </main>
 
-<footer class="site-footer mono">
-  <div class="container">
-    <span>Designed &amp; Engineered by Chitransh Sharma · Data Science &amp; Analytics (2025–2027)</span>
-  </div>
-</footer>
 
 <!-- Interactive Project Deep-Dive Modal -->
 <div class="modal-overlay" id="project-modal" onclick="closeModalOnOverlay(event)">
@@ -1899,9 +1731,11 @@ const queryData = {
   }
 };
 
-function runQuery(key) {
+function runQuery(key, sourceEvent) {
   document.querySelectorAll('.query-chip').forEach(c => c.classList.remove('active'));
-  event.target.classList.add('active');
+  if (sourceEvent && sourceEvent.currentTarget) {
+    sourceEvent.currentTarget.classList.add('active');
+  }
   
   const data = queryData[key];
   if (!data) return;
