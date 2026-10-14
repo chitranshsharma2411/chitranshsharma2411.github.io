@@ -423,116 +423,6 @@ body.menu-open .mobile-menu-drawer { transform: translateX(0); }
   border-radius: var(--radius-sm);
 }
 
-/* Interactive SQL Terminal */
-.terminal-window {
-  background: var(--code-bg);
-  border: 1px solid var(--code-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-.terminal-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 14px;
-  background: #111a28;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.window-controls {
-  display: flex;
-  gap: 7px;
-}
-.control-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #ff5f56;
-}
-.control-dot:nth-child(2) { background: #ffbd2e; }
-.control-dot:nth-child(3) { background: #27c93f; }
-.terminal-title {
-  font-size: 0.76rem;
-  color: #64748b;
-  letter-spacing: 0.05em;
-}
-
-.terminal-body {
-  padding: 16px;
-  font-size: 0.86rem;
-  line-height: 1.5;
-}
-.query-prompt {
-  color: #94a3b8;
-  margin-bottom: 10px;
-}
-.query-prompt span.user { color: var(--teal); }
-.query-prompt span.db { color: var(--amber); }
-
-.preset-queries {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-.query-chip {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #cbd5e1;
-  font-size: 0.75rem;
-  padding: 4px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-.query-chip:hover, .query-chip.active {
-  background: var(--teal);
-  color: #042f2c;
-  border-color: var(--teal);
-  font-weight: 600;
-}
-
-.query-editor {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  padding: 10px 12px;
-  color: #e2e8f0;
-  margin-bottom: 12px;
-  min-height: 64px;
-  white-space: pre-wrap;
-  font-size: 0.83rem;
-}
-.kwd { color: #38bdf8; font-weight: 600; }
-.str { color: #f59e0b; }
-.fn { color: #a855f7; }
-
-.query-results {
-  max-height: 160px;
-  overflow-y: auto;
-  border-top: 1px dashed rgba(255,255,255,0.15);
-  padding-top: 10px;
-}
-.query-results table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.78rem;
-  text-align: left;
-}
-.query-results th {
-  color: var(--teal);
-  padding: 4px 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  font-weight: 600;
-}
-.query-results td {
-  padding: 5px 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  color: #e2e8f0;
-}
-
 /* KPI Ticker Ribbon */
 .kpi-ticker-section {
   padding: 24px 0 44px;
@@ -1266,34 +1156,6 @@ footer.site-footer {
         <img src="profile.png" alt="Chitransh Sharma in a navy suit, with data visualisation graphics">
         <span class="profile-label mono">CHITRANSH / ANALYTICS</span>
       </div>
-
-      <!-- Interactive SQL Query Terminal -->
-      <div class="terminal-window">
-        <div class="terminal-topbar">
-          <div class="window-controls">
-            <div class="control-dot"></div>
-            <div class="control-dot"></div>
-            <div class="control-dot"></div>
-          </div>
-          <div class="terminal-title mono">postgres@chitransh-dw: ~</div>
-        </div>
-        <div class="terminal-body mono">
-        <div class="query-prompt">
-          <span class="user">recruiter</span>@<span class="db">portfolio_db</span>=# click a query to run:
-        </div>
-        <div class="preset-queries">
-          <button class="query-chip active" onclick="runQuery('kpis', event)">SELECT * FROM impact_kpis;</button>
-          <button class="query-chip" onclick="runQuery('pbi', event)">SELECT * FROM power_bi_dashboards;</button>
-          <button class="query-chip" onclick="runQuery('stack', event)">SELECT tool, mastery FROM tech_stack;</button>
-          <button class="query-chip" onclick="runQuery('vsd', event)">SELECT * FROM internship_vsd;</button>
-        </div>
-        <div class="query-editor" id="query-display"><span class="kwd">SELECT</span> metric_name, value, business_context 
-<span class="kwd">FROM</span>   analyst_impact_kpis 
-<span class="kwd">ORDER BY</span> business_value <span class="kwd">DESC</span>;</div>
-        <div class="query-results" id="query-results-area">
-          <!-- Dynamic table populated by JS -->
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1661,6 +1523,80 @@ def calculate_payback_period(annual_labor_savings, initial_capex, monthly_cloud_
     </div>
   </section>
 
+  <!-- Skills -->
+  <section class="skills-section" id="skills">
+    <div class="section-head">
+      <span class="section-badge mono">TECH STACK</span>
+      <h2 class="section-title">Skills &amp; Tools</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Power BI</span>
+          <span class="skill-level-text mono">Advanced (4/4)</span>
+        </div>
+        <span class="skill-desc">DAX measures, time intelligence, star-schema modeling, drill-through</span>
+        <div class="skill-meter"><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Advanced Excel</span>
+          <span class="skill-level-text mono">Advanced (4/4)</span>
+        </div>
+        <span class="skill-desc">Pivot tables, financial modeling, slicers, dashboards</span>
+        <div class="skill-meter"><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">SQL / MySQL</span>
+          <span class="skill-level-text mono">Strong (3/4)</span>
+        </div>
+        <span class="skill-desc">Joins, CTEs, window functions, analytical queries</span>
+        <div class="skill-meter"><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Python</span>
+          <span class="skill-level-text mono">Working (3/4)</span>
+        </div>
+        <span class="skill-desc">Pandas, Streamlit apps, PyMuPDF, automated data pipelines</span>
+        <div class="skill-meter"><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">MongoDB</span>
+          <span class="skill-level-text mono">Strong (3/4)</span>
+        </div>
+        <span class="skill-desc">Document aggregation and validation queries</span>
+        <div class="skill-meter"><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Data Modeling</span>
+          <span class="skill-level-text mono">Advanced (4/4)</span>
+        </div>
+        <span class="skill-desc">Star schema, fact/dimension design, KPI frameworks</span>
+        <div class="skill-meter"><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Statistics & Finance</span>
+          <span class="skill-level-text mono">Strong (3/4)</span>
+        </div>
+        <span class="skill-desc">CAGR, volatility, Beta, Sharpe ratio, risk analysis</span>
+        <div class="skill-meter"><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header">
+          <span class="skill-name">Data Storytelling</span>
+          <span class="skill-level-text mono">Advanced (4/4)</span>
+        </div>
+        <span class="skill-desc">Executive dashboards, business insight narratives</span>
+        <div class="skill-meter"><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div><div class="skill-meter-bar active"></div></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Experience & Education -->
   <section class="timeline-section" id="experience">
     <div class="two-col-grid">
@@ -1836,79 +1772,6 @@ mobileMenuDrawer.querySelectorAll('a[href^="#"]').forEach(link => {
 document.addEventListener('keydown', (keyboardEvent) => {
   if (keyboardEvent.key === 'Escape') setMobileMenu(false);
 });
-
-/* Interactive SQL Terminal Data */
-const queryData = {
-  kpis: {
-    query: `<span class="kwd">SELECT</span> metric_name, value, business_context \n<span class="kwd">FROM</span>   analyst_impact_kpis \n<span class="kwd">ORDER BY</span> business_value <span class="kwd">DESC</span>;`,
-    headers: ['metric_name', 'value', 'business_context'],
-    rows: [
-      ['VSD Finserv Ingestion', '10,000+ Records', 'Cleaned MongoDB documents & automated dispatches'],
-      ['ABC Ltd Commercial Analysis', '₹321.7 Cr Modeled', 'Discovered 21.2% margin erosion in Operations'],
-      ['IBM Workforce Attrition', '1,470 Records', '10+ DAX measures & demographic drill-through'],
-      ['DataForge Parsing Engine', '40+ Formats', 'Automated Parquet/SQL to Excel transformation'],
-      ['Know Your Resume AI', '90%+ ATS Accuracy', 'Llama 3.3 70B semantic matching on Groq']
-    ]
-  },
-  pbi: {
-    query: `<span class="kwd">SELECT</span> dashboard_name, primary_kpi, dax_complexity \n<span class="kwd">FROM</span>   power_bi_dashboards;`,
-    headers: ['dashboard_name', 'primary_kpi', 'dax_complexity'],
-    rows: [
-      ['HR Analytics & Retention', 'Attrition Rate %, Avg Tenure', 'Advanced (10+ Measures)'],
-      ['ABC Ltd Commercial Risk', 'Margin Deficit %, Delay %', 'Advanced (Time Intelligence)'],
-      ['Student AI Interaction', 'Engagement Score, Prompt Density', 'Intermediate'],
-      ['Indian Banking Volatility', 'Sharpe Ratio, CAGR, Beta', 'Advanced Statistical']
-    ]
-  },
-  stack: {
-    query: `<span class="kwd">SELECT</span> tool, specialization, mastery_level \n<span class="kwd">FROM</span>   technical_competencies;`,
-    headers: ['tool', 'specialization', 'mastery_level'],
-    rows: [
-      ['Power BI', 'DAX Measures, Data Modeling, Star Schema', 'Advanced (4/4)'],
-      ['Advanced Excel', 'Pivot Tables, Financial Modeling, Slicers', 'Advanced (4/4)'],
-      ['SQL / MySQL', 'Window Functions, CTEs, Joins', 'Strong (3/4)'],
-      ['Python', 'Pandas, Streamlit Web Apps, PyMuPDF', 'Working (3/4)'],
-      ['MongoDB', 'Document Aggregation, Validation Queries', 'Strong (3/4)']
-    ]
-  },
-  vsd: {
-    query: `<span class="kwd">SELECT</span> internship_role, company, milestone \n<span class="kwd">FROM</span>   vsd_finserv_records;`,
-    headers: ['internship_role', 'company', 'milestone'],
-    rows: [
-      ['Data Analyst Intern', 'VSD Finserv Pvt. Ltd.', 'Processed 10K+ customer files with Python'],
-      ['Automation Engineer', 'VSD Finserv Pvt. Ltd.', 'Built 5+ campaign email workflows'],
-      ['SIP Researcher', 'NBS Academic Track', 'Authored full systems architecture report']
-    ]
-  }
-};
-
-function runQuery(key, sourceEvent) {
-  document.querySelectorAll('.query-chip').forEach(c => c.classList.remove('active'));
-  if (sourceEvent && sourceEvent.currentTarget) {
-    sourceEvent.currentTarget.classList.add('active');
-  }
-  
-  const data = queryData[key];
-  if (!data) return;
-
-  document.getElementById('query-display').innerHTML = data.query;
-  
-  let html = '<table><thead><tr>';
-  data.headers.forEach(h => html += `<th>${h}</th>`);
-  html += '</tr></thead><tbody>';
-  
-  data.rows.forEach(r => {
-    html += '<tr>';
-    r.forEach(val => html += `<td>${val}</td>`);
-    html += '</tr>';
-  });
-  
-  html += '</tbody></table>';
-  document.getElementById('query-results-area').innerHTML = html;
-}
-
-// Initial Query Load
-runQuery('kpis');
 
 /* Project Filter */
 function filterProjects(cat) {
